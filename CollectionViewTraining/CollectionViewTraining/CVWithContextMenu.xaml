@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewTraining.CVWithContextMenu">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView x:Name="collectionName" 
+                            ItemsSource="{Binding Students}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                           IconImageSource="delete.png"
+                                           BackgroundColor="LightPink"
+                                           Invoked="SwipeItem_Invoked"
+                                           Command="{Binding Source={x:Reference collectionName}, Path=BindingContext.DeleteCommand}"
+                                           CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <Grid Padding="10" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0"
+                                   Text="{Binding FirstName}" 
+                                   FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Grid.Row="0"
+                                   Text="{Binding LastName}" 
+                                   FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label Grid.Column="0" Grid.Row="1"
+                                   Text="{Binding BirthDate, StringFormat='{0:MMMM dd, yyyy}'}" 
+                                   FontAttributes="Italic"/>
+                                <Label Grid.Column="1" Grid.Row="1"
+                                   Text="{Binding AverageScore}" 
+                                   FontAttributes="None" 
+                                   HorizontalOptions="Center"/>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
