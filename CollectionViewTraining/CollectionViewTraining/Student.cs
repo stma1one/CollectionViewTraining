@@ -45,8 +45,8 @@ namespace CollectionViewTraining
     }
     class StudentList
     {
-        private ObservableCollection<Student> students;
-        public ObservableCollection<Student> Students 
+        private List<Student> students;
+        public List<Student> Students 
         { 
             get
             {
@@ -55,7 +55,7 @@ namespace CollectionViewTraining
         }
         public StudentList()
         {
-            students = new ObservableCollection<Student>();
+            students = new List<Student>();
             
             InitStudents();
         }
